@@ -3,9 +3,7 @@ name: deploy
 on:
  push:
    branches:   
-    - development 
-   tags: [ v* ]
- 
+    - development  
  
 jobs:
  deploy_ios:
