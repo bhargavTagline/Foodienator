@@ -3,8 +3,10 @@ name: deploy
 on:
  push:
    branches:   
-    - development  
+    - development 
+   tags: [ v* ]
  
+on: [push]
 jobs:
  deploy_ios:
    runs-on: macos-latest
