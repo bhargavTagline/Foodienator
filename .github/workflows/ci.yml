@@ -1,12 +1,11 @@
 name: deploy
  
 on:
- push:
-   branches:   
-    - development 
-   tags: [ v* ]
-
-
+  workflow_dispatch:
+  #  push:
+  #    branches:   
+  #     - development 
+  #    tags: [ v* ]
 
 jobs:
   deploy_ios:
@@ -15,7 +14,7 @@ jobs:
    steps:
      - uses: maxim-lobanov/setup-xcode@v1
        with:
-         xcode-version: '14.0' #latest version
+         xcode-version: '14.0'
      - uses: actions/checkout@v2
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
