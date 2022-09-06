@@ -7,6 +7,3 @@ export default StyleSheet.create({
         backgroundColor: '#22C7A9',
     },
 });
-
-
-

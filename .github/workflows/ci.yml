@@ -1,11 +1,10 @@
 name: deploy
  
 on:
-  workflow_dispatch:
-  #  push:
-  #    branches:   
-  #     - development 
-  #    tags: [ v* ]
+   push:
+     branches:   
+      - development 
+     tags: [ v* ]
 
 jobs:
   deploy_ios:
