@@ -1,11 +1,14 @@
-name: deploy
+name: Pull Request
  
 on:
+  pull_request:
+    branch:
+    - development
   workflow_dispatch:  
 
 jobs:
-  deploy:
-   runs-on: macOS-latest
+  test:
+   runs-on: macos-11
 
    steps:
      - uses: maxim-lobanov/setup-xcode@v1
@@ -47,10 +50,10 @@ jobs:
       
      - name: upload to testflight
        env:
-         FASTLANE_USER: ${{ secrets.APP_STORE_CONNECT_USER`NAME }}
+         FASTLANE_USER: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
          FASTLANE_PASSWORD: ${{ secrets.APP_STORE_CONNECT_PASSWORD }}
          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
        run: |
          cd ios
-         bundle exec fastlane build_to_testflight
+         bundle exec fastlane build_to_testflight 
