@@ -1,10 +1,7 @@
 name: deploy
  
 on:
-   push:
-     branches:   
-      - development 
-     tags: [ v* ]
+  workflow_dispatch:  
 
 jobs:
   deploy:
@@ -50,7 +47,7 @@ jobs:
       
      - name: upload to testflight
        env:
-         FASTLANE_USER: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+         FASTLANE_USER: ${{ secrets.APP_STORE_CONNECT_USER`NAME }}
          FASTLANE_PASSWORD: ${{ secrets.APP_STORE_CONNECT_PASSWORD }}
          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
