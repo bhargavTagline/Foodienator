@@ -143,6 +143,3 @@ jobs:
          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
        run: |
          exec .github/scripts/import-certificate.sh
- 
-     - name: my-step
-        run: echo "Hello World!"
