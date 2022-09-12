@@ -132,9 +132,9 @@ jobs:
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
 
-     - name: Set environment variables from project settings
-       run: |
-         exec .github/scripts/set-env-from-xcodeproj.sh
+    #  - name: Set environment variables from project settings
+    #    run: |
+    #      exec .github/scripts/set-env-from-xcodeproj.sh
 
      - name: Import signing certificate
        env:
@@ -142,3 +142,9 @@ jobs:
          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
        run: |
          exec .github/scripts/import-certificate.sh
+
+     - name: Import provisioning profile
+       env:
+         PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
+       run: |
+         exec .github/scripts/import-profile.sh
