@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -euo pipefail
+set -euo pipefail
 
 cd ios
 SCHEME="$(xcodebuild -list -json | jq -r '.project.schemes[0]')"
