@@ -143,8 +143,10 @@ jobs:
          PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
        run: |
          exec .github/scripts/import-profile.sh
-     - name: Run Node in Github VM
-      uses: actions/setup-node@master
+      - name: Set Node.JS
+        uses: actions/setup-node@master
+        with:
+          node-version: 18.x
      - name: Install npm dependencies
         run: |
          npm install
