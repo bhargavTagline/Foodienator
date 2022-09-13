@@ -151,8 +151,8 @@ jobs:
        run: |
          cd ios
          sudo xcode-select -s /Applications/Xcode_14.0.app
-    - name: Install npm dependencies
-       run: npm install
-     - name: Install pod dependencies
-       run: |
-         cd ios && pod install
+    # - name: Install npm dependencies
+    #    run: npm install
+    #  - name: Install pod dependencies
+    #    run: |
+    #      cd ios && pod install
