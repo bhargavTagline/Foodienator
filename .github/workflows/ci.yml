@@ -31,8 +31,8 @@ jobs:
          PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
        run: |
          exec .github/scripts/import-profile.sh
+         
      - name: Get yarn cache directory path
-         id: yarn-cache-dir-path
          run: echo "::set-output name=dir::$(yarn cache dir)"
 
      - name: Install npm dependencies
