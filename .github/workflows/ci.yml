@@ -126,10 +126,8 @@ jobs:
     runs-on: macos-latest
     steps:
      - uses: actions/checkout@v2
-      #  - name: Set Node.JS
-      #   uses: actions/setup-node@master
-      #   with:
-      #     node-version: 18.x
+     - name: Set Node.JS
+       run: brew install node
 
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
