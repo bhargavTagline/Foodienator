@@ -124,9 +124,6 @@ on: push
 jobs:
   my-job:
     runs-on: macOS-latest
-     defaults:
-      run:
-        working-directory: ios
 
     steps:
     #   - uses: maxim-lobanov/setup-xcode@v1
