@@ -129,21 +129,19 @@ jobs:
     #   - uses: maxim-lobanov/setup-xcode@v1
     #    with:
     #      xcode-version: latest-stable
-    - uses: actions/checkout@v2
+     - uses: actions/checkout@v2
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
 
      - name: Set environment variables from project settings
        run: |
          bash .github/scripts/set-env-from-xcodeproj.sh
-
      - name: Import signing certificate
        env:
          SIGNING_CERTIFICATE_P12_DATA: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
        run: |
          bash .github/scripts/import-certificate.sh
-
      - name: Import provisioning profile
        env:
          PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
