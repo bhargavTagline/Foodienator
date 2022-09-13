@@ -146,8 +146,7 @@ jobs:
        env:
          PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
        run: |
-         bash .github/scripts/import-profile.sh
-         
+         bash .github/scripts/import-profile.sh        
      name: setup xcode version
        run: |
          cd ios
