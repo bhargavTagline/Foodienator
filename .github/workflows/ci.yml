@@ -153,7 +153,7 @@ jobs:
          exec .github/scripts/import-profile.sh
     
      - name: Install npm dependencies
-        run: yarn install --force
+        run: yarn install --frozen-lockfile
 
      - name: Install pod dependencies
         run: |
