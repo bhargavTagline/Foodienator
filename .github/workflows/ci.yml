@@ -123,28 +123,33 @@ name: hello-world
 on: push
 jobs:
   my-job:
-    runs-on: macos-11
+    runs-on: macOS-latest
+     defaults:
+      run:
+        working-directory: ios
+
     steps:
     #   - uses: maxim-lobanov/setup-xcode@v1
     #    with:
     #      xcode-version: latest-stable
-    #  - uses: actions/checkout@v2
+    - name: Check out Git repository
+       uses: actions/checkout@v2
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
 
-    #  - name: Set environment variables from project settings
-    #    run: |
-    #      exec .github/scripts/set-env-from-xcodeproj.sh
+     - name: Set environment variables from project settings
+       run: |
+         bash .github/scripts/set-env-from-xcodeproj.sh
 
      - name: Import signing certificate
        env:
          SIGNING_CERTIFICATE_P12_DATA: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
        run: |
-         exec .github/scripts/import-certificate.sh
+         bash .github/scripts/import-certificate.sh
 
      - name: Import provisioning profile
        env:
          PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
        run: |
-         exec .github/scripts/import-profile.sh
+         bash .github/scripts/import-profile.sh
