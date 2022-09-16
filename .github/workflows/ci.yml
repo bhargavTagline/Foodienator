@@ -13,13 +13,14 @@ jobs:
      - name: Set yarn
        uses: actions/setup-node@v3
        run: npm install --global yarn
-       cache: "yarn"
+       cache: yarn
 
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
 
      - name: Install npm dependencies
-        run: yarn ci
+        run: yarn install
+        run: yarn test
 
     #  - name: Set environment variables from project settings
     #    run: |
