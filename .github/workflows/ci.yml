@@ -32,10 +32,6 @@ jobs:
        run: |
          exec .github/scripts/import-profile.sh
      
-     - name: setup xcode version
-        run: |
-         cd ios
-         sudo xcode-select -s /Applications/Xcode_13.1.app
      
      - name: Setup Node
        uses: actions/setup-node@v1
@@ -51,6 +47,11 @@ jobs:
        run: |
          cd ios && pod install && cd ..
 
+     - name: setup xcode version
+        run: |
+         cd ios
+         sudo xcode-select -s /Applications/Xcode_13.1.app
+         
      - name: setup fastlane
        run: cd ios && bundle install    
 
