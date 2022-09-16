@@ -4,9 +4,8 @@ on:
     branches:
       - development
 jobs:
-  my-job:
+  deploy_ios:
     runs-on: macos-latest
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
     steps:
      - uses: maxim-lobanov/setup-xcode@v1
        with:
