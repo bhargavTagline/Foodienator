@@ -1,6 +1,8 @@
 name: Deploy-ios
 on: 
-  workflow_dispatch:  
+  push:
+    branches:
+      - development
 jobs:
   my-job:
     runs-on: macos-latest
