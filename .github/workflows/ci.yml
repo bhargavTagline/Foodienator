@@ -6,9 +6,15 @@ jobs:
     runs-on: macos-latest
     steps:
      - uses: actions/checkout@v2
-     - name: Set Node.JS
-       uses: actions/setup-node@v3
-       run: brew install node
+     - name: Setup Node
+       uses: actions/setup-node@v1
+       with:
+        node-version: '16.x'
+
+     - name: Install dependencies
+       run: npm install
+     - name: Run tests
+       run: npm run test
 
      - name: Set yarn
        uses: actions/setup-node@v3
@@ -18,9 +24,8 @@ jobs:
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
 
-     - name: Install npm dependencies
-        run: yarn install
-        run: yarn test
+     - name: Install Dependencies
+        run: npm install
 
     #  - name: Set environment variables from project settings
     #    run: |
