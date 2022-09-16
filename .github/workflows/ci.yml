@@ -7,10 +7,13 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - name: Set Node.JS
+       uses: actions/setup-node@v3
        run: brew install node
 
      - name: Set yarn
+       uses: actions/setup-node@v3
        run: npm install --global yarn
+       cache: "yarn"
 
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
