@@ -4,8 +4,13 @@ on:
 jobs:
   my-job:
     runs-on: macos-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     steps:
+     - uses: maxim-lobanov/setup-xcode@v1
+       with:
+         xcode-version: '13.1'
      - uses: actions/checkout@v2
+     
      - name: Setup Node
        uses: actions/setup-node@v1
        with:
@@ -43,9 +48,9 @@ jobs:
      - name: setup fastlane
        run: cd ios && bundle install    
      
-    #  - name: setup xcode version
-    #     run: |
-    #      cd ios && sudo xcode-select -s /Applications/Xcode_13.0.app
+     - name: setup xcode version
+        run: |
+         cd ios && sudo xcode-select -s /Applications/Xcode_13.1.app
 
      - name: upload to testflight
        env:
