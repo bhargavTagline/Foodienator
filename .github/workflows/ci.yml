@@ -39,11 +39,23 @@ jobs:
      - name: Install pod dependencies
        run: |
          cd ios && pod install && cd ..
-         
-     - name: setup xcode version
-        run: |
-         cd ios &&  sudo xcode-select -s /Applications/Xcode_13.0.app
 
+     - name: setup fastlane
+       run: cd ios && bundle install    
+     
+    #  - name: setup xcode version
+    #     run: |
+    #      cd ios && sudo xcode-select -s /Applications/Xcode_13.0.app
+
+     - name: upload to testflight
+       env:
+         FASTLANE_USER: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+         FASTLANE_PASSWORD: ${{ secrets.APP_STORE_CONNECT_PASSWORD }}
+         APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+         FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+       run: |
+         cd ios
+         bundle exec fastlane build_to_testflight
 
 
 
