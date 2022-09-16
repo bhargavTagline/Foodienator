@@ -24,9 +24,6 @@ jobs:
      - name: setup ruby
        run: brew install openssl readline rbenv ruby-build
 
-     - name: Install Dependencies
-        run: npm install
-
     #  - name: Set environment variables from project settings
     #    run: |
     #      bash .github/scripts/set-env-from-xcodeproj.sh
