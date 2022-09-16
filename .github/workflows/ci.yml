@@ -42,8 +42,7 @@ jobs:
          
      - name: setup xcode version
         run: |
-         cd ios
-         sudo xcode-select -s /Applications/Xcode_13.0.app
+         cd ios &&  sudo xcode-select -s /Applications/Xcode_13.0.app
 
 
 
