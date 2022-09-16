@@ -37,7 +37,8 @@ jobs:
          exec .github/scripts/import-profile.sh
 
      - name: Install pod dependencies
-        run: npx pod-install
+       run: |
+         cd ios && pod install && cd ..
          
      - name: setup xcode version
         run: |
