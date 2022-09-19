@@ -83,6 +83,19 @@ platform :ios do
     export_method: "app-store",
     output_directory: "build",
   )
+  
+  update_project_provisioning(
+    xcodeproj: "Foodienator.xcodeproj",
+    profile: "com.fastlane.example.#{options[:id]}.mobileprovision",
+    build_configuration: "Release",
+    code_signing_identity: "iPhone Distribution"
+  )
+  update_project_team(
+    path: "Project.xcodeproj",
+    teamid: options[:team_id]
+  )
+
+
   puts "Pushing build to testflight"
   pilot(
     api_key: get_app_store_connect_api_key,
