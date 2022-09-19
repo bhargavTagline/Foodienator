@@ -66,7 +66,9 @@ platform :ios do
     scheme: "Foodienator", #Replace with Your scheme
     workspace: "Foodienator.xcworkspace", #Replace with Your workspace
     export_method: "app-store",
-    output_directory: "build"
+    output_directory: "build",
+    team_id:'7639N3C25S',
+
   )
   puts "Pushing build to testflight"
   pilot(api_key: get_app_store_connect_api_key,
@@ -75,7 +77,8 @@ platform :ios do
     skip_waiting_for_build_processing: true,
     skip_submission: true,
     distribute_external: false,
-    notify_external_testers: false
+    notify_external_testers: false,
+    team_id:'7639N3C25S',
   )
    puts "Testflight Build Succeed"
  end
