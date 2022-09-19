@@ -34,8 +34,7 @@ jobs:
      
      - name: setup xcode version
         run: |
-         sudo xcode-select -switch /Applications/Xcode_13.1.app
-        #  sudo xcode-select --switch /Applications/Xcode_13.1.app
+         sudo xcode-select -s /Applications/Xcode_13.1.app
      
      - name: Setup Node
        uses: actions/setup-node@v1
