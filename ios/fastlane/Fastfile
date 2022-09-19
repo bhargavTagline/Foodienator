@@ -67,8 +67,6 @@ platform :ios do
     workspace: "Foodienator.xcworkspace", #Replace with Your workspace
     export_method: "app-store",
     output_directory: "build",
-    team_id:'7639N3C25S',
-
   )
   puts "Pushing build to testflight"
   pilot(api_key: get_app_store_connect_api_key,
