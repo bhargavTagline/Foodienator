@@ -27,6 +27,21 @@ platform :ios do
   
   lane :beta do
     increment_build_number(xcodeproj: "Foodienator.xcodeproj")
+
+
+    disable_automatic_code_signing
+    update_project_provisioning(
+      xcodeproj: "Foodienator.xcodeproj",
+      profile: "com.fastlane.example.#{options[:id]}.mobileprovision",
+      build_configuration: "Release",
+      code_signing_identity: "iPhone Distribution"
+    )
+    update_project_team(
+      path: "Project.xcodeproj",
+      teamid: options[:team_id]
+    )
+
+
     build_app(workspace: "Foodienator.xcworkspace", scheme: "Foodienator")
     upload_to_testflight(
       team_id:'7639N3C25S',
@@ -69,14 +84,15 @@ platform :ios do
     output_directory: "build",
   )
   puts "Pushing build to testflight"
-  pilot(api_key: get_app_store_connect_api_key,
+  pilot(
+    api_key: get_app_store_connect_api_key,
     ipa: ipa,
     app_identifier: "org.reactjs.native.example.Foodienator",
     skip_waiting_for_build_processing: true,
     skip_submission: true,
     distribute_external: false,
     notify_external_testers: false,
-    team_id:'7639N3C25S',
+    team_id: '7639N3C25S',
   )
    puts "Testflight Build Succeed"
  end
