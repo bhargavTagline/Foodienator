@@ -12,53 +12,53 @@ jobs:
          xcode-version: '13.1'
      - uses: actions/checkout@v2
     
-    #  - name: setup ruby
-    #    run: brew install openssl readline rbenv ruby-build
+     - name: setup ruby
+       run: brew install openssl readline rbenv ruby-build
 
-    #  - name: Set environment variables from project settings
-    #    run: |
-    #      bash .github/scripts/set-env-from-xcodeproj.sh
+     - name: Set environment variables from project settings
+       run: |
+         bash .github/scripts/set-env-from-xcodeproj.sh
 
-    #  - name: Import signing certificate
-    #    env:
-    #      SIGNING_CERTIFICATE_P12_DATA: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
-    #      SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
-    #    run: |
-    #      exec .github/scripts/import-certificate.sh
+     - name: Import signing certificate
+       env:
+         SIGNING_CERTIFICATE_P12_DATA: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
+         SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
+       run: |
+         exec .github/scripts/import-certificate.sh
 
-    #  - name: Import provisioning profile
-    #    env:
-    #      PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
-    #    run: |
-    #      exec .github/scripts/import-profile.sh
+     - name: Import provisioning profile
+       env:
+         PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
+       run: |
+         exec .github/scripts/import-profile.sh
      
-    # #  - name: setup xcode version
-    # #     run: |
-    # #      cd ios
-    # #      sudo xcode-select -s '/Applications/Xcode_12.1.app/Contents/Developer'
-     
-    #  - name: Setup Node
-    #    uses: actions/setup-node@v1
-    #    with:
-    #     node-version: '16.x'
-
-    #  - name: Install dependencies
-    #    run: npm install
-
-    #  - name: Install pod dependencies
-    #    run: |
-    #      cd ios && pod install && cd ..
-
-    #  - name: setup fastlane
-    #    run: cd ios && bundle install    
-
-    #  - name: Increment Version
-    #    run: |
+    #  - name: setup xcode version
+    #     run: |
     #      cd ios
-    #      echo $COMMIT_MESSAGE
-    #      bundle exec fastlane increment_version
-    #    env: 
-    #      COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+    #      sudo xcode-select -s '/Applications/Xcode_12.1.app/Contents/Developer'
+     
+     - name: Setup Node
+       uses: actions/setup-node@v1
+       with:
+        node-version: '16.x'
+
+     - name: Install dependencies
+       run: npm install
+
+     - name: Install pod dependencies
+       run: |
+         cd ios && pod install && cd ..
+
+     - name: setup fastlane
+       run: cd ios && bundle install    
+
+     - name: Increment Version
+       run: |
+         cd ios
+         echo $COMMIT_MESSAGE
+         bundle exec fastlane increment_version
+       env: 
+         COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
 
      - name: upload to testflight
        env:
