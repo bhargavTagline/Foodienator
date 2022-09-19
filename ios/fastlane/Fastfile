@@ -62,20 +62,20 @@ end
 
   sigh(api_key: "58T684WNPZ" , app_identifier: "org.reactjs.native.example.Foodienator") #Replace with Your package name
 
-  # ipa = gym(
-  #   scheme: "Foodienator", #Replace with Your scheme
-  #   workspace: "Foodienator.xcworkspace", #Replace with Your workspace
-  #   export_method: "app-store",
-  #   output_directory: "build"
-  # )
-  # puts "Pushing build to testflight"
-  # pilot(api_key: "58T684WNPZ",
-  #   ipa: ipa,
-  #   app_identifier: "org.reactjs.native.example.Foodienator",
-  #   skip_waiting_for_build_processing: true,
-  #   skip_submission: true,
-  #   distribute_external: false,
-  #   notify_external_testers: false
-  # )
-  #  puts "Testflight Build Succeed"
+  ipa = gym(
+    scheme: "Foodienator", #Replace with Your scheme
+    workspace: "Foodienator.xcworkspace", #Replace with Your workspace
+    export_method: "app-store",
+    output_directory: "build"
+  )
+  puts "Pushing build to testflight"
+  pilot(api_key: "58T684WNPZ",
+    ipa: ipa,
+    app_identifier: "org.reactjs.native.example.Foodienator",
+    skip_waiting_for_build_processing: true,
+    skip_submission: true,
+    distribute_external: false,
+    notify_external_testers: false
+  )
+   puts "Testflight Build Succeed"
 end
