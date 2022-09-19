@@ -34,7 +34,6 @@ jobs:
      
      - name: setup xcode version
         run: |
-         cd ios
          sudo xcode-select -s '/Applications/Xcode_12.1.app/Contents/Developer'
      
      - name: Setup Node
