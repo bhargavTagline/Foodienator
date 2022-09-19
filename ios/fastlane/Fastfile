@@ -13,71 +13,71 @@
 # # Uncomment the line if you want fastlane to automatically update itself
 # # update_fastlane
 
-# default_platform(:ios)
-
-# platform :ios do
-#   desc "Push a new beta build to TestFlight"
-#   lane :beta do
-#     increment_build_number(xcodeproj: "Foodienator.xcodeproj")
-#     build_app(workspace: "Foodienator.xcworkspace", scheme: "Foodienator")
-#     upload_to_testflight
-#   end
-# end
-
 default_platform(:ios)
- 
+
 platform :ios do
- desc "Push a new beta build to TestFlight"
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    increment_build_number(xcodeproj: "Foodienator.xcodeproj")
+    build_app(workspace: "Foodienator.xcworkspace", scheme: "Foodienator")
+    upload_to_testflight
+  end
+end
+
+# default_platform(:ios)
  
- lane :internal do
-     update_fastlane
- end
-  lane :get_app_store_connect_api_key do
-   app_store_connect_api_key(
-     key_id: "58T684WNPZ", #Your Auth key ID
-     issuer_id: "9389fe93-4b9b-4ba5-bff5-0470887755f9",#Your Auth key Issuer ID
-     key_filepath: "fastlane/AuthKey_58T684WNPZ.p8",
-     in_house: false,
-   )
- end
+# platform :ios do
+#  desc "Push a new beta build to TestFlight"
  
- desc "Increment version prod"
- lane :increment_version_prod do
+#  lane :internal do
+#      update_fastlane
+#  end
+#   lane :get_app_store_connect_api_key do
+#    app_store_connect_api_key(
+#      key_id: "58T684WNPZ", #Your Auth key ID
+#      issuer_id: "9389fe93-4b9b-4ba5-bff5-0470887755f9",#Your Auth key Issuer ID
+#      key_filepath: "fastlane/AuthKey_58T684WNPZ.p8",
+#      in_house: false,
+#    )
+#  end
  
-   final_version = get_version_number     
-   final_build_number =  increment_build_number
+#  desc "Increment version prod"
+#  lane :increment_version_prod do
  
-   puts "Final Version " + final_version
-   puts "Final Build Number " + final_build_number
-   ENV["VERSION"] = final_version
-   ENV["BUILD_NUMBER"] = final_build_number
+#    final_version = get_version_number     
+#    final_build_number =  increment_build_number
  
- end
+#    puts "Final Version " + final_version
+#    puts "Final Build Number " + final_build_number
+#    ENV["VERSION"] = final_version
+#    ENV["BUILD_NUMBER"] = final_build_number
+ 
+#  end
 
      
- #builds app
- lane :build_to_testflight do
+#  #builds app
+#  lane :build_to_testflight do
  
-  puts "Preparing TestFlight Build - Make sure you have updated the Build Version & Number Otherwise Testflight will reject it."
+#   puts "Preparing TestFlight Build - Make sure you have updated the Build Version & Number Otherwise Testflight will reject it."
 
-  sigh(api_key: "58T684WNPZ" , app_identifier: "org.reactjs.native.example.Foodienator") #Replace with Your package name
+#   sigh(api_key: "58T684WNPZ" , app_identifier: "org.reactjs.native.example.Foodienator") #Replace with Your package name
 
-  ipa = gym(
-    scheme: "Foodienator", #Replace with Your scheme
-    workspace: "Foodienator.xcworkspace", #Replace wit  h Your workspace
-    export_method: "app-store",
-    output_directory: "build"
-  )
+#   ipa = gym(
+#     scheme: "Foodienator", #Replace with Your scheme
+#     workspace: "Foodienator.xcworkspace", #Replace wit  h Your workspace
+#     export_method: "app-store",
+#     output_directory: "build"
+#   )
 
-  puts "Pushing build to testflight"
+#   puts "Pushing build to testflight"
 
-  pilot(api_key: "58T684WNPZ",
-    ipa: ipa,
-    app_identifier: "org.reactjs.native.example.Foodienator",
-    skip_waiting_for_build_processing: true,
-    skip_submission: true,
-    distribute_external: false,
-    notify_external_testers: false
-  )
-   puts "Testflight Build Succeed"
-end
+#   pilot(api_key: "58T684WNPZ",
+#     ipa: ipa,
+#     app_identifier: "org.reactjs.native.example.Foodienator",
+#     skip_waiting_for_build_processing: true,
+#     skip_submission: true,
+#     distribute_external: false,
+#     notify_external_testers: false
+#   )
+#    puts "Testflight Build Succeed"
+# end
