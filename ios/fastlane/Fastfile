@@ -80,6 +80,4 @@ platform :ios do
     notify_external_testers: false
   )
    puts "Testflight Build Succeed"
-
 end
-

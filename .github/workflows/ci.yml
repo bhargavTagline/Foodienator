@@ -52,13 +52,13 @@ jobs:
      - name: setup fastlane
        run: cd ios && bundle install    
 
-     - name: Increment Version
-       run: |
-         cd ios
-         echo $COMMIT_MESSAGE
-         bundle exec fastlane increment_version_prod
-       env: 
-         COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+    #  - name: Increment Version
+    #    run: |
+    #      cd ios
+    #      echo $COMMIT_MESSAGE
+    #      bundle exec fastlane increment_version
+    #    env: 
+    #      COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
 
      - name: upload to testflight
        env:
