@@ -55,29 +55,27 @@ end
 #  end
 
      
-#  #builds app
-#  lane :build_to_testflight do
+ #builds app
+ lane :build_to_testflight do
  
-#   puts "Preparing TestFlight Build - Make sure you have updated the Build Version & Number Otherwise Testflight will reject it."
+  puts "Preparing TestFlight Build - Make sure you have updated the Build Version & Number Otherwise Testflight will reject it."
 
-#   sigh(api_key: "58T684WNPZ" , app_identifier: "org.reactjs.native.example.Foodienator") #Replace with Your package name
+  sigh(api_key: "58T684WNPZ" , app_identifier: "org.reactjs.native.example.Foodienator") #Replace with Your package name
 
-#   ipa = gym(
-#     scheme: "Foodienator", #Replace with Your scheme
-#     workspace: "Foodienator.xcworkspace", #Replace wit  h Your workspace
-#     export_method: "app-store",
-#     output_directory: "build"
-#   )
-
-#   puts "Pushing build to testflight"
-
-#   pilot(api_key: "58T684WNPZ",
-#     ipa: ipa,
-#     app_identifier: "org.reactjs.native.example.Foodienator",
-#     skip_waiting_for_build_processing: true,
-#     skip_submission: true,
-#     distribute_external: false,
-#     notify_external_testers: false
-#   )
-#    puts "Testflight Build Succeed"
-# end
+  # ipa = gym(
+  #   scheme: "Foodienator", #Replace with Your scheme
+  #   workspace: "Foodienator.xcworkspace", #Replace with Your workspace
+  #   export_method: "app-store",
+  #   output_directory: "build"
+  # )
+  # puts "Pushing build to testflight"
+  # pilot(api_key: "58T684WNPZ",
+  #   ipa: ipa,
+  #   app_identifier: "org.reactjs.native.example.Foodienator",
+  #   skip_waiting_for_build_processing: true,
+  #   skip_submission: true,
+  #   distribute_external: false,
+  #   notify_external_testers: false
+  # )
+  #  puts "Testflight Build Succeed"
+end
