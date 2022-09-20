@@ -62,10 +62,10 @@ platform :ios do
 
  desc "Increment version prod"
  lane :increment_version do
-
-   final_build_number =  increment_build_number
-   final_version = get_version_number     
- 
+  final_build_number = increment_build_number
+  final_version = get_version_number     
+  
+   puts "increment_build_number" + increment_build_number
    puts "Final Version " + final_version
    puts "Final Build Number " + final_build_number
    ENV["VERSION"] = final_version
