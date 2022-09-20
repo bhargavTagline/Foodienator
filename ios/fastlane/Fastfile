@@ -102,11 +102,11 @@ platform :ios do
     output_directory: "build",
     codesigning_identity:'iPhone Distribution',
     export_team_id:'7639N3C25S',
-    export_options: {
-      provisioningProfiles: { 
-          DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER
-      }
-    }
+    # export_options: {
+    #   provisioningProfiles: { 
+    #       DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER
+    #   }
+    # }
   )  
 
   puts "Pushing build to testflight"
