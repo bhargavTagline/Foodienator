@@ -56,11 +56,11 @@ platform :ios do
    app_store_connect_api_key(
      key_id: "58T684WNPZ", #Your Auth key ID
      issuer_id: "9389fe93-4b9b-4ba5-bff5-0470887755f9",#Your Auth key Issuer ID
-     key_filepath: "fastlane/AuthKey_58T684WNPZ.p8",
+     key_filepath: "./AuthKey_58T684WNPZ.p8",
      in_house: false,
    )
  end
- 
+
  desc "Increment version prod"
  lane :increment_version do
 
@@ -86,13 +86,9 @@ platform :ios do
   # puts "option object #{options}"
   
   update_project_provisioning(
-    scheme: "Foodienator",
     xcodeproj: "Foodienator.xcodeproj",
-    # profile: "com.fastlane.example.#{options[:id]}.mobileprovision",
-    configuration: "Release",
-    clean: true,
+    build_configuration: "Release",
     code_signing_identity: "iPhone Distribution",
-    export_team_id:'7639N3C25S',
   )
 
   update_project_team(
