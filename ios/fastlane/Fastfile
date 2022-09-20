@@ -70,7 +70,7 @@ platform :ios do
    puts "Final Version " + final_version
    puts "Final Build Number " + final_build_number
    ENV["VERSION"] = final_version
-   ENV["BUILD_NUMBER"] = final_build_number
+   ENV["BUILD_NUMBER"] = increment_build_number
  end
 
      

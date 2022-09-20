@@ -60,15 +60,15 @@ jobs:
        env: 
          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
 
-    #  - name: upload to testflight
-    #    env:
-    #      FASTLANE_USER: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
-    #      FASTLANE_PASSWORD: ${{ secrets.APP_STORE_CONNECT_PASSWORD }}
-    #      APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
-    #      FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
-    #    run: |
-    #      cd ios
-    #      bundle exec fastlane build_to_testflight
+     - name: upload to testflight
+       env:
+         FASTLANE_USER: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+         FASTLANE_PASSWORD: ${{ secrets.APP_STORE_CONNECT_PASSWORD }}
+         APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+         FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+       run: |
+         cd ios
+         bundle exec fastlane build_to_testflight
 
 
 
