@@ -1,7 +1,6 @@
 export const appIcon = {
     drawarIcon: require('./drawarIcon.png'),
     searchIcon: require('./searchIcon.png'),
-    addIcon: require('./addIcon.png'),
     EmailIcon: require('./EmailIcon.png'),
     userIcon: require('./userIcon.png'),
     passIcon: require('./passIcon.png'),
