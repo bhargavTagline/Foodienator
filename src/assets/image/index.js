@@ -5,8 +5,6 @@ export const appImages = {
     register: require('./register.png'),
     manImg: require('./manImg.png'),
     egeImg: require('./egeImg.png'),
-    burgerImg: require('./burgerImg.png'),
-    mixFoodImg: require('./mixFoodImg.png'),
     pizzaImg: require('./pizzaImg.png'),
 
 }
