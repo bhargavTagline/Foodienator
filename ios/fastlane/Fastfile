@@ -80,9 +80,8 @@ platform :ios do
 
   sigh(api_key: get_app_store_connect_api_key , app_identifier: "org.reactjs.native.example.Foodienator") #Replace with Your package name
 
-  # puts "com.fastlane.example.#{options[:id]}.mobileprovision"
-  # puts "Option:Team_id = #{options[:team_id]}"
-  # puts "option object #{options}"
+  puts DEVELOPER_APP_ID
+  puts PROVISIONING_PROFILE_SPECIFIER
   
   update_project_provisioning(
     xcodeproj: "Foodienator.xcodeproj",
@@ -94,13 +93,14 @@ platform :ios do
     path: "Foodienator.xcodeproj",
     teamid: '7639N3C25S'
   )  
-
-  ipa = gym(
-    scheme: "Foodienator", #Replace with Your scheme
+  
+  ipa = build_app(
     workspace: "Foodienator.xcworkspace", #Replace with Your workspace
+    scheme: "Foodienator", #Replace with Your scheme
     configuration: "Release",
     export_method: "app-store",
     output_directory: "build",
+    codesigning_identity:'iPhone Distribution'
     export_options: {
       provisioningProfiles: { 
           DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER
