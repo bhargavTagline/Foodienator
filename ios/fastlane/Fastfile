@@ -19,6 +19,10 @@
 default_platform(:ios)
 
 platform :ios do
+  
+  DEVELOPER_APP_ID = ENV["DEVELOPER_APP_ID"]
+  PROVISIONING_PROFILE_SPECIFIER = ENV["PROVISIONING_PROFILE_SPECIFIER"]
+  
   desc "Push a new beta build to TestFlight"
   
   lane :internal do
@@ -77,14 +81,14 @@ platform :ios do
 
   sigh(api_key: get_app_store_connect_api_key , app_identifier: "org.reactjs.native.example.Foodienator") #Replace with Your package name
 
-  puts "com.fastlane.example.#{options[:id]}.mobileprovision"
-  puts "Option:Team_id = #{options[:team_id]}"
-  puts "option object #{options}"
+  # puts "com.fastlane.example.#{options[:id]}.mobileprovision"
+  # puts "Option:Team_id = #{options[:team_id]}"
+  # puts "option object #{options}"
   
   update_project_provisioning(
     scheme: "Foodienator",
     xcodeproj: "Foodienator.xcodeproj",
-    profile: "com.fastlane.example.#{options[:id]}.mobileprovision",
+    # profile: "com.fastlane.example.#{options[:id]}.mobileprovision",
     configuration: "Release",
     clean: true,
     code_signing_identity: "iPhone Distribution",
@@ -93,14 +97,20 @@ platform :ios do
 
   update_project_team(
     path: "Foodienator.xcodeproj",
-    teamid: options[:team_id]
+    teamid: '7639N3C25S'
   )  
 
   ipa = gym(
     scheme: "Foodienator", #Replace with Your scheme
     workspace: "Foodienator.xcworkspace", #Replace with Your workspace
+    configuration: "Release",
     export_method: "app-store",
     output_directory: "build",
+    export_options: {
+      provisioningProfiles: { 
+          DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER
+      }
+    }
   )  
 
   puts "Pushing build to testflight"
